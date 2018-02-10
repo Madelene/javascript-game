@@ -36,6 +36,21 @@ function addPlatforms() {
   platforms.setAll('body.immovable', true); // if you set this to false, the platform would move. Makes the game harder
 }
 
+// create a single animated item and add to screen
+function createItem(left, top, image) {
+  var item = items.create(left, top, image);
+  item.animations.add('spin');
+  item.animations.play('spin', 10, true);
+}
+
+// create the winning badge and add to screen
+function createBadge() {
+  badges = game.add.physicsGroup();
+  var badge = badges.create(750, 400, 'badge');
+  badge.animations.add('spin');
+  badge.animations.play('spin', 10, true);
+}
+
 // setup game when the web page loads
 window.onload = function () {
   game = new Phaser.Game(800, 600, Phaser.AUTO, '', 
