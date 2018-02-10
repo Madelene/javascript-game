@@ -51,6 +51,29 @@ function createBadge() {
   badge.animations.play('spin', 10, true);
 }
 
+// when the player collects an item on the screen
+function itemHandler(player, item) {
+  console.log(item);
+  item.kill(); // removes object (the coin)
+  if (item.key === 'coin') {
+    currentScore = currentScore + 10;
+  } else if (item.key === 'star') {
+    currentScore = currentScore + 25;
+  } else if (item.key === 'poison') {
+    player.kill();
+    winningMessage.text = "YOU LOSE!!!";
+  }
+  if (currentScore >= winningScore && won != 'poisoned') {
+      createBadge();
+  }
+}
+
+// when the player collects the badge at the end of the game
+function badgeHandler(player, badge) {
+  badge.kill();
+  won = true;
+}
+
 // setup game when the web page loads
 window.onload = function () {
   game = new Phaser.Game(800, 600, Phaser.AUTO, '', 
