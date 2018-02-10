@@ -1,4 +1,4 @@
 # A Simple Jumping Game 
 
-- developed in JavaScript
+- Developed in JavaScript
 - Uses phaser framework (phaser.io)
